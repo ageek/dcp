@@ -5,11 +5,12 @@
 #  You can assume that the messages are decodable. For example, '001' is not allowed.
 
 
+# Every branch calls inself twice for 2 branches
+# complexity = O(2^n) 
 def countEncodings(msg):
     if msg.startswith('0'): 
         return 0
-    #for "" blank string and strings with one number
-    elif len(msg)<=1:
+    elif len(msg)<=1: #for "" blank string and strings with one number
         return 1
     
     total = 0
