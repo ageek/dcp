@@ -30,8 +30,8 @@ def countEncodingsDP(s):
         return 0
 
     dp = [0] * (n + 1)
-    dp[0] = 1
-    dp[1] = 1
+    dp[0] = 1   #there's one way to decode an empty string 
+    dp[1] = 1   #there's one way to decode a single-character string.
 
     for i in range(2, n + 1):
         if s[i - 1] != '0':
@@ -48,7 +48,7 @@ def countEncodingsDP(s):
     
     
 
-msg='123412'
+msg='1234'
 count=countEncodings(msg)
 print(f'Total encodings found = {count:}')
 
