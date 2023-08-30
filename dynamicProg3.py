@@ -36,7 +36,10 @@ print(countDict)
 print("For DP optimimalCuts - Memoization======================")
 optCuts = [-99] * len(length)
 #print(optCuts)
-#complexity = 2+n => O(n)
+#complexity = O(n^2)
+# In rod cutting, we have n subproblems
+# overall, and at most n choices to examine for each, yielding an O(n2)  running time.
+
 def optimalCutDP(n):
     global count
     count += 1
