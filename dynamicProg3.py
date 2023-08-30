@@ -19,10 +19,12 @@ def optimumCut(n):
         optimumRevenue = max(optimumRevenue, price[i-1]+optimumCut(n-i))
     
     return optimumRevenue
-        
-x=optimumCut(10)
-print(x)
+ 
+print("For non DP optimalCuts - recursive=====================")        
+# x=optimumCut(6)
+# print(x)
 
+# check function call stats = 1+2^n
 countDict = {}
 for x in range(1,10+1):
     count = 1   #reset count 
@@ -31,5 +33,41 @@ for x in range(1,10+1):
 
 print(countDict)
 
+print("For DP optimimalCuts - Memoization======================")
+optCuts = [-99] * len(length)
+#print(optCuts)
+#complexity = 2+n => O(n)
+def optimalCutDP(n):
+    global count
+    count += 1
+    if n==0:
+        return 0
+    if optCuts[n-1] > 0:
+        return optCuts[n-1]
+    else:
+        #optimalRevenue = -99
+        for i in range(1,n+1):
+            #optimalRevenue =  max(optimalRevenue, price[i-1]+optimalCutDP(n-i))
+            optCuts[n-1] =  max(optCuts[n-1], price[i-1]+optimalCutDP(n-i))
+        
+        #optCuts[n-1] = optimalRevenue
+        
+        #return optimalRevenue
+        return optCuts[n-1]
+            
+
+# x=optimalCutDP(6)
+# print(f'optimalCutDP={x}')
+# print(optCuts)
     
-    
+# check function call stats = 2+n = O(n)
+countDict = {}
+for x in range(1,10+1):
+    count = 1   #reset count 
+    optimalCutDP(x)
+    countDict[x]=count
+
+print(countDict)
+
+for x in optCuts:
+    print(x, end=", ")
